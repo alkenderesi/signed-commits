@@ -2,7 +2,7 @@
 
 ## 1.1. Generate a new SSH key
 
-```
+```bash
 ssh-keygen -t ed25519 -C your+github+address@users.noreply.github.com
 ```
 
@@ -35,14 +35,39 @@ Select `Signing Key` as a `Key type`.
 
 ## 2.3. Configure Git
 
-```
+```bash
 git config --global gpg.format ssh
 ```
-```
+```bash
 git config --global user.signingkey PATH/TO/.pub/FILE
 ```
-```
+```bash
 git config --global commit.gpgsign true
 ```
 
 After following all these steps, the commits from now on should be labeled verified on GitHub.
+
+<br>
+
+---
+# 3. Transfer keys
+
+## 3.1. Copy keys
+
+Copy your SSH key files into the .ssh directory of your new system.
+
+## 3.2. Update file permissions on all keys
+
+```bash
+chmod 600 YOUR/SSH/KEY/FILE
+```
+
+## 3.3. Add SSH keys to you system
+
+```bash
+ssh-add
+```
+Check whether the keys were added successfully:
+```bash
+ssh-add -l
+```
