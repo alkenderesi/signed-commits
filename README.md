@@ -54,20 +54,21 @@ After following all these steps, the commits from now on should be labeled verif
 
 ## 3.1. Copy keys
 
-Copy your SSH key files into the .ssh directory of your new system.
+Copy your SSH key files into the .ssh directory of your new system.  
+($HOME/.ssh)
 
-## 3.2. Update file permissions on all keys
+## 3.2. Add keys
+
+Open PowerShell as administrator and run these commands:
 
 ```bash
-chmod 600 YOUR/SSH/KEY/FILE
+Get-Service ssh-agent | Set-Service -StartupType Automatic
 ```
 
-## 3.3. Add SSH keys to you system
+```bash
+Start-Service ssh-agent
+```
 
 ```bash
-ssh-add
-```
-Check whether the keys were added successfully:
-```bash
-ssh-add -l
+ssh-add PATH/TO/PRIVATE/KEY/FILE
 ```
